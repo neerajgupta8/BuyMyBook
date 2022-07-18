@@ -32,7 +32,7 @@ export const update = (userId, token, user) => {
 };
 
 export const updateUser = (user, next) => {
-  if (!typeof window != "undefined") {
+  if (!typeof window !== "undefined") {
     if (localStorage.getItem("jwt")) {
       let auth = JSON.parse(localStorage.getItem("jwt"));
       auth.user = user;
