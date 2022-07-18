@@ -20,12 +20,15 @@ const app = express();
 
 // db
 mongoose
-  .connect(process.env.MONGO_URI, {
-    autoIndex: true,
-    useNewUrlParser: true,
-    // userCreateIndex: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://neeraj_user:neeraj1234@nodeapi.cg9if2a.mongodb.net/ecommerce?retryWrites=true&w=majority&wtimeoutMS=5000",
+    {
+      autoIndex: true,
+      useNewUrlParser: true,
+      // userCreateIndex: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => console.log("DB connected"));
 
 // middlewares

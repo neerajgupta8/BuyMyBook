@@ -5,6 +5,8 @@ const { errorHandler } = require("../helpers/dbErrorHandler");
 //..
 //..
 
+const JWT_SECRET = "jlakjhgkljagalkhgkvnkjsfn";
+
 //signup
 exports.signup = (req, res) => {
   console.log("req.body", req.body);
@@ -46,7 +48,7 @@ exports.signin = (req, res) => {
     }
 
     // generate a signed token with user id and secret
-    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ _id: user._id }, JWT_SECRET);
 
     //persist the token as 't' in cookie with expiry date
     res.cookie("t", token, { expire: new Date() + 9999 });
@@ -69,7 +71,7 @@ exports.signout = (req, res) => {
 
 //requireSignin
 exports.requireSignin = expressJwt({
-  secret: "jlakjhgkljagalkhgkvnkjsfn",
+  secret: JWT_SECRET,
   algorithms: ["HS256"],
   userProperty: "auth",
 });
